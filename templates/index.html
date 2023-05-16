@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Boggle Game</title>
+</head>
+<body>
+    <h1>BOGGLE TIME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! O_O;;;;;;</h1>
+<section id="board">
+    <p>You have: <span id="timer">60</span> seconds remaining!</p>
+    <p id="game-over" hidden>Time is Up!</p>
+
+    <button id="playAgainButton" onclick="game.start()">Go!</button>
+    <br>
+    <table>
+    {% for rows in board %}
+        <tr>
+            {% for squares in rows %}
+                <td>{{squares}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <form method="GET" id="form">
+        <label for="text-input">Put your word here:</label>
+        <input type="text" name="text-input" id="text-input" onfocus="this.value=''">
+        <button id="form-button">Word Submit</button>
+    </form>
+    <p id="submit-message"></p>
+    <div id="score-div">
+        <p id="word-length" hidden></p>
+        <p>Your total score is: <span id="current-score">0</span></p>
+        <p>Your highscore is: {{high_score}}</p>
+        <p>You have played: {{num_played}} times</p>
+    </div>
+</section>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/script.js"></script>
+    <script>let game = new Boggle("board");</script>
+</body>
+</html>
